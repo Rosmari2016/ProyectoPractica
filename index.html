@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="UTF-8">
 	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +21,7 @@
 				flex: 1 0 auto;
 			}
 	</style>
-
+	<link rel="shortcut icon" type="image/x-icon" href="ico/favicon.png">
 </head>
 <body>
 	<ul id="dropdown1" class="dropdown-content">
@@ -97,12 +97,12 @@
 								<td>C$ 250</td>
 								<td>C$ 245</td>
 								<td>C$ 280</td>
-								<td>1</td>
+								<td><span class="new badge red" data-badge-caption="">1</span></td>
 							</tr>
 						</tbody>
 					</table>
 					<br><br>
-					<table class="responsive-table">
+					<table class="responsive-table ">
 						<thead>
 							<tr colspan="6"><center><b>Listado y Totales de Productos</b></center></tr>
 							<tr>
@@ -115,13 +115,14 @@
 							</tr>
 						</thead>
 						<tbody>
+							
 							<tr>
 								<td>1</td>
 								<td><a href="#">Desarmador</a></td>
 								<td>C$ 25</td>
 								<td>C$ 28</td>
 								<td>C$ 30</td>
-								<td>150</td>
+								<td><span class="new badge green accent-4" data-badge-caption="">500</span></td>
 							</tr>
 							<tr>
 								<td>2</td>
@@ -129,7 +130,7 @@
 								<td>C$ 2</td>
 								<td>C$ 3</td>
 								<td>C$ 4</td>
-								<td>250</td>
+								<td><span class="new badge green accent-4" data-badge-caption="">350</span></td>
 							</tr>
 							<tr>
 								<td>3</td>
@@ -137,7 +138,7 @@
 								<td>C$ 15</td>
 								<td>C$ 20</td>
 								<td>C$ 25</td>
-								<td>500</td>
+								<td><span class="new badge green accent-4" data-badge-caption="">280</span></td>
 							</tr>
 							<tr>
 								<td>4</td>
@@ -145,7 +146,7 @@
 								<td>C$ 20</td>
 								<td>C$ 25</td>
 								<td>C$ 30</td>
-								<td>700</td>
+								<td><span class="new badge green accent-4" data-badge-caption="">200</span></td>
 							</tr>
 							<tr>
 								<td>5</td>
@@ -153,8 +154,17 @@
 								<td>C$ 250</td>
 								<td>C$ 245</td>
 								<td>C$ 280</td>
-								<td>1</td>
+								<td><span class="new badge red" data-badge-caption="">1</span></td>
 							</tr>
+							<!--
+							<tr>
+								<td>&nbsp</td>
+								<td><div align="right"><strong>Totales:</strong></div></td>
+								<td><div align=""><strong>C$ 22.391,00</strong></div></td>
+								<td><div align=""><strong>C$ 29.272,00</strong></div></td>
+								<td><div align=""><strong>C$ 29.273,00</strong></div></td>
+								<td><span class="new badge blue" data-badge-caption="">1000</span></td>
+							</tr>-->
 						</tbody>
 					</table>
 				</div>
@@ -178,6 +188,7 @@
 		$(document).ready(function () {
             $(".dropdown-button").dropdown();
             $(".button-collapse").sideNav();
+			$('.scrollspy').scrollSpy();
         });
 	</script>
 </body>

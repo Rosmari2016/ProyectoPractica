@@ -3,6 +3,7 @@
  * Copyright 2014-2015 Materialize
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
+ 
 .materialize-red {
   background-color: #e51c23 !important;
 }
@@ -3199,16 +3200,17 @@ span.badge {
   line-height: inherit;
   color: #757575;
   position: absolute;
-  right: 15px;
+  float:left;
   box-sizing: border-box;
 }
 
 span.badge.new {
-  font-weight: 300;
+  font-weight: 600;
   font-size: 0.8rem;
   color: #fff;
   background-color: #26a69a;
   border-radius: 2px;
+  
 }
 
 span.badge.new:after {
@@ -8467,3 +8469,4 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
     margin-bottom: 5em;
   }
 }
+

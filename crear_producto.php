@@ -1,9 +1,17 @@
+<?php
+    session_start();
+    require("inc/php_conexion.php");
+    $db = new Db();
+        if(!$_SESSION['tipo_usu']=='a' or !$_SESSION['tipo_usu']=='ca'){
+			header('location:error.php');
+		}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Administrador/a</title>
+	<title>Inventario</title>
 	
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="css/materialize.css">
@@ -22,35 +30,11 @@
 	<link rel="shortcut icon" type="image/x-icon" href="ico/favicon.png">
 </head>
 <body>
-    <ul id="dropdown1" class="dropdown-content">
-	  <li><a href="#!"><i class="material-icons left">settings_backup_restore</i>Cambiar Contraseña</a></li>
-	  <li class="divider"></li>
-	  <li><a href="#!"><i class="material-icons left">power_settings_new</i>Salir</a></li>
-	</ul>
-	<nav>
-	    <div class="nav-wrapper green accent-4">
-	      <!--<a href="#!" class="brand-logo">Logo</a>-->
-	      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-	      <ul class="left hide-on-med-and-down">
-	        <li class="active"><a href="#"><i class="material-icons left">library_books</i>Inventarios</a></li>
-	        <li><a href="caja.php"><i class="material-icons left">shopping_cart</i>Ventas</a></li>
-	        <li><a href="#"><i class="material-icons left">assignment</i> Reportes</a></li>
-	        
-	      </ul>
-	      <ul class="right hide-on-med-and-down">
-	      	<li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons left">perm_identity</i>Hola! Rosmari<i class="material-icons right">arrow_drop_down</i></a></li>
-	      </ul>
-
-	      <ul class="side-nav" id="mobile-demo">
-	        <li><a href="#">Inventarios</a></li>
-	        <li><a href="caja.php">Ventas</a></li>
-	        <li><a href="#">Reportes</a></li>
-	      </ul>
-
-	    </div>
-	  </nav>
-	
-		<br>
+    <?php
+		if ($_SESSION['tipo_usu']=='a'){
+			require_once "menu_admin.php";
+		}
+	?>
 		<main>
 			<div class="row">
 				<div class="col s12 m4 l2">
@@ -70,78 +54,116 @@
 				
 				<div class="col s12 m4 l6">
 					<div class="row">
-                        <form class="col s12" action="">
+                        <form class="col s12" method="POST" action="">
                              <div class="input-field col s6">
-                                 <input type="text" class="validate" placeholder="Código del articulo">
+                                 <input type="text" class="validate" id="ccodigo" name="ccodigo" placeholder="Código del articulo">
                                  
                              </div>
                              <div class="input-field col s6">
                                 <br>
-                                <button class="btn waves-effect waves-light green accent-4" type="submit" name="action">Confirmar Código
+                                <button class="btn waves-effect waves-light green accent-4" type="submit">Confirmar Código
                                     <i class="material-icons right">send</i>
                                  </button>
                              </div>
                         </form>
                         
-                        <form class="col s12" action="">
-                            
+                        <form class="col s12" enctype="multipart/form-data" action="">
+                            <?php
+                                if(!empty($_POST['ccodigo']) or !empty($_GET['codigo'])){
+                                    $prov='';$nom='';$costo='0';$mayor='0';$cantidad='0';$minimo='0';$seccion='';$codigo='';$venta='0';$cprov='';
+                                    $fechax=date("d").'/'.date("m").'/'.date("Y");
+                                    $fechay=date("Y-m-d");
+                                    if(!empty($_GET['codigo'])){
+                                        $codigo=$_GET['codigo'];
+                                    }
+                                    if (!empty($_POST['ccodigo'])){
+                                        $codigo=$_POST['ccodigo'];  
+                                    }
+                                    $can = $db->mysqli->query("SELECT * FROM producto WHERE cod='$codigo'");
+                                    if ($row=$can->fetch_object()){
+                                        $prov=$row->prov;
+                                        $cprov=$row->cprov;
+                                        $nom=$row->nom;
+                                        $costo=$row->costo;
+                                        $mayor=$row->mayor;
+                                        $venta=$row->venta;
+                                        $cantidad=$row->cantidad;
+                                        $minimo=$row->minimo;
+                                        $seccion=$row->seccion;
+                                        $fechay=$row->fecha;
+                                        $boton="Actualizar producto";
+                                        echo '<div class="alert alert-success"><strong>Producto / Articulo '.$nom.'</strong> con el codigo '.$codigo.' ya existe</div>';   
+                                    }else{
+                                        $boton="Guardar Producto";
+                                    }
+                                
+
+                        ?>
                             <div class="row">
                                 
                                 <div class="input-field col s6">
-                                    <input type="text" class="validate" disabled>
+                                    <input type="text" class="validate" name="codigo" id="codigo" value="<?php echo $codigo; ?>" readonly>
                                     <label for="icon_prefix">Codigo</label>
                                 </div>
                                 <div class="input-field col s6">
-                                    <input type="number" class="validate">
+                                    <input type="number" class="validate" name="mayor" id="mayor" value="<?php echo $mayor; ?>" required>
                                     <label for="icon_prefix">Precio Mayoreo</label>
                                 </div>
                                 <div class="input-field col s6">
-                                    <input type="text" class="validate">
+                                    <input type="text" class="validate" name="nom" id="nom" value="<?php echo $nom; ?>" required>
                                     <label for="icon_prefix">Nombre</label>
                                 </div>
                                 <div class="input-field col s6">
-                                    <input type="number" class="validate">
+                                    <input type="number" class="validate" name="cantidad" id="cantidad" value="<?php echo $cantidad; ?>" required>
                                     <label for="icon_prefix">Cantidad Actual</label>
                                 </div>
                                 <div class="input-field col s6">
-                                    <select>
-                                        <option value="1">Sinsa</option>
-                                        <option value="2">Tecno</option>
-                                        <option value="3">Ferromac</option>
-                                    </select>
+                                    <select name="prov" id="prov">
+                                         <?php 
+                                            $can=$db->mysqli->query("SELECT * FROM proveedor WHERE estado='s'");
+                                            while($row=$can->fetch_object())
+                                            {
+                                         ?>
+                                                <option value="<?php echo $row->codigo; ?>" <?php if($prov==$row->codigo){ echo 'selected';} ?>><?php echo $row->empresa; ?></option>
+                                       <?php } ?>
+                                    </select>   
                                     <label>Proveedor</label>
                                 </div>
                                 <div class="input-field col s6">
-                                    <input type="number" class="validate">
+                                    <input type="number" class="validate" name="minimo" id="minimo" value="<?php echo $minimo; ?>" required>
                                     <label for="icon_prefix">Cantidad Minima</label>
                                 </div>
                                 <div class="input-field col s6">
-                                    <input type="text" class="validate">
+                                    <input type="text" class="validate" name="cprov" id="cprov" value="<?php echo $cprov; ?>" required>
                                     <label for="icon_prefix">Cod. Articulo del Proveedor</label>
                                 </div>
                                 <div class="input-field col s6">
-                                    <select>
-                                        <option value="1">Sinsa</option>
-                                        <option value="2">Tecno</option>
-                                        <option value="3">Ferromac</option>
+                                    <select name="seccion" id="seccion">
+                                        <?php 
+                                            $can=$db->mysqli->query("SELECT * FROM seccion WHERE estado='s'");
+                                            while($row=$can->fetch_object())
+                                            {
+                                        ?>
+                                               <option value="<?php echo $row->id; ?>" <?php if ($seccion==$row->id){ echo 'selected';} ?>><?php echo $row->nombre; ?></option>
+                                       <?php } ?>
                                     </select>
                                     <label>Seleccion del Articulo</label>
                                 </div>
                                 <div class="input-field col s6">
-                                    <input type="date" class="datepicker">
+                                    <input type="date" class="datepicker" name="fecha" id="fecha" value="<?php echo $fechay; ?>" required>
                                     <label for="icon_prefix">Fecha</label>
                                 </div>
                                 <div class="input-field col s6">
-                                    <input type="number" class="validate">
+                                    <input type="number" class="validate" name="venta" id="venta" value="<?php echo $venta;?>" required>
                                     <label for="icon_prefix">Precio Venta</label>
                                 </div>
                                 <div class="input-field col s6">
-                                    <input type="number" class="validate">
+                                    <input type="number" class="validate" name="costo" id="costo" value="<?php echo $costo; ?>" required>
                                     <label for="icon_prefix">Precio Costo</label>
                                 </div>
                                 <div class="col s6">
                                     <br>
-                                    <button class="btn waves-effect waves-light green accent-4" type="submit" name="action">Guardar
+                                    <button class="btn waves-effect waves-light green accent-4" type="submit" name="action"><?php echo $boton; ?>
                                         <i class="material-icons right">send</i>
                                     </button>
                                 </div>
@@ -149,6 +171,7 @@
                                 
                                 </div>
                             </div>
+                            <?php } ?>
                         </form>
                     </div>				
 				</div>

@@ -1,188 +1,164 @@
+<?php 
+	 session_start();
+    require("inc/php_conexion.php");
+	$db = new Db();
+	require_once("inc/php_funciones.php");
+	$act="0";
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+    <meta name="author" content="">
+
 	<title>Administrador/a</title>
 	
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="css/materialize.css">
 		
-	<style>	
-		  body {
-				display: flex;
-				min-height: 100vh;
-				flex-direction: column;
-			}
+	<style>
+		body {
+		display: flex;
+		min-height: 100vh;
+		flex-direction: column;
+		}
 
-			main {
-				flex: 1 0 auto;
-			}
-	</style>
+		main {
+		flex: 1 0 auto;
+		}
+
+		body {
+		background: #fffde7;
+		}
+
+		.input-field input[type=date]:focus + label,
+		.input-field input[type=text]:focus + label,
+		.input-field input[type=email]:focus + label,
+		.input-field input[type=password]:focus + label {
+		color: #00c853;
+		}
+
+		.input-field input[type=date]:focus,
+		.input-field input[type=text]:focus,
+		.input-field input[type=email]:focus,
+		.input-field input[type=password]:focus {
+		border-bottom: 2px solid #00c853;
+		box-shadow: none;
+		}
+		h5{
+			color:#00c853;
+		}
+  </style>
 	<link rel="shortcut icon" type="image/x-icon" href="ico/favicon.png">
 </head>
 <body>
-	<ul id="dropdown1" class="dropdown-content">
-	  <li><a href="#!"><i class="material-icons left">settings_backup_restore</i>Cambiar Contraseña</a></li>
-	  <li class="divider"></li>
-	  <li><a href="#!"><i class="material-icons left">power_settings_new</i>Salir</a></li>
-	</ul>
-	<nav>
-	    <div class="nav-wrapper green accent-4">
-	      <!--<a href="#!" class="brand-logo">Logo</a>-->
-	      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-	      <ul class="left hide-on-med-and-down">
-	        <li><a href="crear_producto.php"><i class="material-icons left">library_books</i>Inventarios</a></li>
-	        <li><a href="caja.php"><i class="material-icons left">shopping_cart</i>Ventas</a></li>
-	        <li><a href="#"><i class="material-icons left">assignment</i> Reportes</a></li>
-	        
-	      </ul>
-	      <ul class="right hide-on-med-and-down">
-	      	<li><a class="dropdown-button" href="#!" data-activates="dropdown1"><i class="material-icons left">perm_identity</i>Hola! Rosmari<i class="material-icons right">arrow_drop_down</i></a></li>
-	      </ul>
-
-	      <ul class="side-nav" id="mobile-demo">
-	        <li><a href="#">Inventarios</a></li>
-	        <li><a href="caja.php">Ventas</a></li>
-	        <li><a href="#">Reportes</a></li>
-	      </ul>
-
-	    </div>
-	  </nav>
 	
-		<br>
-		<main>
-			<div class="row">
-				<div class="col s12 m4 l2">
-					
-					<aside>
-							<div class="collection">
-								<div class="collection-header"><h4 class="collection-header-with">Configuración</h4></div>
-								<a href="#!" class="collection-item active">Datos de la empresa</a>
-								<a href="#!" class="collection-item">Administrar Secciones de Inventarios</a>
-								<a href="caja.html" class="collection-item">Ventas</a>
-							</div>	
-					</aside>
-				</div>
-				
-				<div class="col s12 m4 l10">
-					<div class="fixed-action-btn horizontal " style="bottom: 45px; right: 24px;">
-						<a class="btn-floating btn-large green accent-4">
-							<i class="material-icons">menu</i> Reporte PDF
-						</a>
-						<ul>
-							<li><a class="btn-floating green"><i class="material-icons">print</i></a></li>
-						</ul>
-					</div>
-					<table class="responsive-table">
-						<thead>
-							<tr colspan="6"><center><b>Productos de Baja Existencia</b></center></tr>
-							<tr>
-								<th>Código</th>
-								<th>Descripción del Productos</th>
-								<th>Costo</th>
-								<th>Venta a por Mayor</th>
-								<th>Valor Venta</th>
-								<th>Existencia</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>5</td>
-								<td><a href="#">Zinc</a></td>
-								<td>C$ 250</td>
-								<td>C$ 245</td>
-								<td>C$ 280</td>
-								<td><span class="new badge red" data-badge-caption="">1</span></td>
-							</tr>
-						</tbody>
-					</table>
-					<br><br>
-					<table class="responsive-table ">
-						<thead>
-							<tr colspan="6"><center><b>Listado y Totales de Productos</b></center></tr>
-							<tr>
-								<th>Código</th>
-								<th>Descripción del Productos</th>
-								<th>Costo</th>
-								<th>Venta a por Mayor</th>
-								<th>Valor Venta</th>
-								<th>Existencia</th>
-							</tr>
-						</thead>
-						<tbody>
-							
-							<tr>
-								<td>1</td>
-								<td><a href="#">Desarmador</a></td>
-								<td>C$ 25</td>
-								<td>C$ 28</td>
-								<td>C$ 30</td>
-								<td><span class="new badge green accent-4" data-badge-caption="">500</span></td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td><a href="#">Tornillos 1 mm.</a></td>
-								<td>C$ 2</td>
-								<td>C$ 3</td>
-								<td>C$ 4</td>
-								<td><span class="new badge green accent-4" data-badge-caption="">350</span></td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td><a href="#">Brocha pequeña</a></td>
-								<td>C$ 15</td>
-								<td>C$ 20</td>
-								<td>C$ 25</td>
-								<td><span class="new badge green accent-4" data-badge-caption="">280</span></td>
-							</tr>
-							<tr>
-								<td>4</td>
-								<td><a href="#">Brocha Grande</a></td>
-								<td>C$ 20</td>
-								<td>C$ 25</td>
-								<td>C$ 30</td>
-								<td><span class="new badge green accent-4" data-badge-caption="">200</span></td>
-							</tr>
-							<tr>
-								<td>5</td>
-								<td><a href="#">Zinc</a></td>
-								<td>C$ 250</td>
-								<td>C$ 245</td>
-								<td>C$ 280</td>
-								<td><span class="new badge red" data-badge-caption="">1</span></td>
-							</tr>
-							<!--
-							<tr>
-								<td>&nbsp</td>
-								<td><div align="right"><strong>Totales:</strong></div></td>
-								<td><div align=""><strong>C$ 22.391,00</strong></div></td>
-								<td><div align=""><strong>C$ 29.272,00</strong></div></td>
-								<td><div align=""><strong>C$ 29.273,00</strong></div></td>
-								<td><span class="new badge blue" data-badge-caption="">1000</span></td>
-							</tr>-->
-						</tbody>
-					</table>
-				</div>
-			</div>
+	<main>
+		<div class="center-align">
+		<img class="responsive-img" style="width: 250px;" src="" />
+		
 
-		</main>
+		<h5 class="">Por favor, iniciar sesión en su cuenta</h5>
+		<div class="section"></div>
+
+		<div class="container">
+			<div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+
+			<form name="form1"class="col s12" method="post" action="">
+				<div class='row'>
+				<div class='col s12'>
+				</div>
+				<h3>Bienvenidos</h3>
+				</div>
+				<?php
+					$act="1";
+					if(!empty($_POST['usuario']) and !empty($_POST['contra'])){
+						$usuario=trim($_POST['usuario']);
+						$contra=trim($_POST['contra']);
+						$sql = "SELECT * FROM usuarios WHERE (usu='".$usuario."' or ced='".$usuario."') and con='".$contra."'";
+						$resultado=$db->mysqli->query($sql);
+					
+						if ($row=$resultado->fetch_object()){
+							
+							$_SESSION['cod_user']=$row->ced;
+							$_SESSION['username']=$row->usu;
+							$_SESSION['tipo_usu']=$row->tipo;
+							//inicializa las variables de caja por defecto
+							$_SESSION['tventa']="venta";
+							$_SESSION['ddes']=0;
+							//////////////////////////////////////////////
+							if ($_SESSION['tipo_usu']=='a' OR $_SESSION['tipo_usu']=='ca'){
+								echo mensajes('Bienvenido<br/>'.$row->nom,'verde').'<br/>';	 
+								echo '<div class="center-align">
+										<div class="preloader-wrapper big active">
+											<div class="spinner-layer spinner-green-only">
+											<div class="circle-clipper left">
+												<div class="circle"></div>
+											</div><div class="gap-patch">
+												<div class="circle"></div>
+											</div><div class="circle-clipper right">
+												<div class="circle"></div>
+											</div>
+											</div>
+										</div>
+								
+									</div>			
+								<br/>';
+								echo '<meta http-equiv="refresh" content="2;url=empresa.php">';
+							}
+						}else{
+							if($act=="1"){
+								echo mensajes('Usuario y Contraseña Incorrecto<br>','rojo');
+								echo '<div class="center-align"><a href="index.php" class="btn green accent-4"><strong>Intentar de Nuevo</strong><a/></div><br/>';
+							}else{$act=="0";}
+						}
+					}else{
+						echo '<div class="row">
+								<div class="input-field col s12">
+									<input class="validate" type="text" name="usuario" />
+									<label for="user">Introduce tu usuario</label>
+								</div>
+							</div>';
+
+						echo '<div class="row">
+									<div class="input-field col s12">
+										<input class="validate" type="password" name="contra"  />
+										<label for="password">Introduce tu contraseña</label>
+									</div>
+								</div>';
+						
+						echo '<br />
+							<div class="center-align">
+								<div class="row">
+									<button type="submit" name="btn_login" class="col s12 btn btn-large waves-effect indigo green accent-4">Entrar</button>
+								</div>
+							</div>';
+					}
+				
+				?>
+				
+				
+			</form>
+			</div>
+		</div>
+		</div>
+
+		<div class="section"></div>
+	
+	</main>
 	 	
 
-		<footer class="page-footer green accent-4">
-			<div class="footer-copyright">
-				© 2016 Copyright Rosa Marina Lumbí Suárez
+	<footer class="page-footer green accent-4">
+		<div class="footer-copyright">
+			© 2016 Copyright Rosa Marina Lumbí Suárez
 				<!--<a class="grey-text text-lighten-4 right" href="#!">More Links</a>-->
-			</div>
-   		</footer>
+		</div>
+   	</footer>
 
 	<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function () {
-            $(".dropdown-button").dropdown();
-            $(".button-collapse").sideNav();
-        });
-	</script>
+
 </body>
 </html>

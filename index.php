@@ -32,8 +32,8 @@
 	      <!--<a href="#!" class="brand-logo">Logo</a>-->
 	      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 	      <ul class="left hide-on-med-and-down">
-	        <li><a href="#"><i class="material-icons left">library_books</i>Inventarios</a></li>
-	        <li><a href="caja.html"><i class="material-icons left">shopping_cart</i>Ventas</a></li>
+	        <li><a href="crear_producto.php"><i class="material-icons left">library_books</i>Inventarios</a></li>
+	        <li><a href="caja.php"><i class="material-icons left">shopping_cart</i>Ventas</a></li>
 	        <li><a href="#"><i class="material-icons left">assignment</i> Reportes</a></li>
 	        
 	      </ul>
@@ -43,7 +43,7 @@
 
 	      <ul class="side-nav" id="mobile-demo">
 	        <li><a href="#">Inventarios</a></li>
-	        <li><a href="caja.html">Ventas</a></li>
+	        <li><a href="caja.php">Ventas</a></li>
 	        <li><a href="#">Reportes</a></li>
 	      </ul>
 
@@ -171,13 +171,10 @@
 
 		<footer class="page-footer green accent-4">
 			<div class="footer-copyright">
-        
 				© 2016 Copyright Rosa Marina Lumbí Suárez
 				<!--<a class="grey-text text-lighten-4 right" href="#!">More Links</a>-->
-			
 			</div>
    		</footer>
-
 
 	<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>

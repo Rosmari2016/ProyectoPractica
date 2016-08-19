@@ -31,8 +31,8 @@
 	      <!--<a href="#!" class="brand-logo">Logo</a>-->
 	      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 	      <ul class="left hide-on-med-and-down">
-	        <li><a href="#"><i class="material-icons left">library_books</i>Inventarios</a></li>
-	        <li class="active"><a href="#"><i class="material-icons left">shopping_cart</i>Ventas</a></li>
+	        <li><a href="crear_producto.php"><i class="material-icons left">library_books</i>Inventarios</a></li>
+	        <li class="active"><a href="caja.php"><i class="material-icons left">shopping_cart</i>Ventas</a></li>
 	        <li><a href="#"><i class="material-icons left">assignment</i> Reportes</a></li>
 	        
 	      </ul>
@@ -41,8 +41,8 @@
 	      </ul>
 
 	      <ul class="side-nav" id="mobile-demo">
-	        <li><a href="#">Inventarios</a></li>
-	        <li class="active"><a href="#">Ventas</a></li>
+	        <li><a href="crear_producto.php">Inventarios</a></li>
+	        <li class="active"><a href="caja.php">Ventas</a></li>
 	        <li><a href="#">Reportes</a></li>
 	      </ul>
 

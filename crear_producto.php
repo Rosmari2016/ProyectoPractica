@@ -37,7 +37,7 @@
 	?>
 		<main>
 			<div class="row">
-				<div class="col s12 m4 l2">
+				<div class="col s12 m12 l2">
 					
 					<aside>
 							<div class="collection">
@@ -52,9 +52,12 @@
 					</aside>
 				</div>
 				
-				<div class="col s12 m4 l6">
+				<div class="col s12 m12 l10">
+                     <div class="card-panel green accent-3" style="padding:2px;">
+                        <h5 class="center-align" style="color:white;">Creación de Productos</h5>
+                    </div>
 					<div class="row">
-                        <form class="col s12" method="POST" action="">
+                        <form class="col s6" method="POST" action="">
                              <div class="input-field col s6">
                                  <input type="text" class="validate" id="ccodigo" name="ccodigo" placeholder="Código del articulo">
                                  
@@ -92,13 +95,16 @@
                                         $seccion=$row->seccion;
                                         $fechay=$row->fecha;
                                         $boton="Actualizar producto";
+                                        $icon="mode_edit";
                                         echo '<div class="alert alert-success"><strong>Producto / Articulo '.$nom.'</strong> con el codigo '.$codigo.' ya existe</div>';   
                                     }else{
                                         $boton="Guardar Producto";
+                                        $icon="send";
                                     }
                                 
 
                         ?>
+                         <div class="col s8">
                             <div class="row">
                                 
                                 <div class="input-field col s6">
@@ -164,11 +170,28 @@
                                 <div class="col s6">
                                     <br>
                                     <button class="btn waves-effect waves-light green accent-4" type="submit" name="action"><?php echo $boton; ?>
-                                        <i class="material-icons right">send</i>
+                                        <i class="material-icons right"><?php echo $icon; ?></i>
                                     </button>
                                 </div>
                                 <div class="col s6">
                                 
+                                </div>
+                            </div>
+                            
+                           </div>
+                            <div class="col s4 center-align"><br><br>
+                                <h4 style="font-size:1.5em;">Imagen del Producto</h4>
+                                <br><br>
+                                
+                                <img src="img/articulo/producto.png" width="200" height="200" class="responsive-img">
+                                <div class="file-field input-field ">
+                                    <div class="btn green accent-4">
+                                        <i class="material-icons">picture_in_picture</i>
+                                        <input type="file" multiple>
+                                    </div>
+                                    <div class="file-path-wrapper ">
+                                        <input class="file-path validate" type="text" placeholder="Ningún archivo seleccionado">
+                                    </div>
                                 </div>
                             </div>
                             <?php } ?>
@@ -176,21 +199,7 @@
                     </div>				
 				</div>
 
-                <div class="col s12 m4 l4 center-align"><br><br>
-                    <h4 style="font-size:1.5em;">Imagen del Producto</h4>
-                    <br><br>
-                    
-                    <img src="img/articulo/producto.png" width="200" height="200" class="responsive-img">
-                    <div class="file-field input-field ">
-                        <div class="btn green accent-4">
-                            <span>Seleccionar archivo</span>
-                            <input type="file" multiple>
-                        </div>
-                        <div class="file-path-wrapper ">
-                            <input class="file-path validate" type="text" placeholder="Ningún archivo seleccionado">
-                        </div>
-                    </div>
-                </div>
+               
 			</div>
 
 		</main>

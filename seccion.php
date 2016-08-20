@@ -38,7 +38,7 @@
 
     <main>
         <div class="row">
-            <div class="col s12 m4 l2">		
+            <div class="col s12 m12 l2">		
 					<aside>
 							<div class="collection">
 								<div class="collection-header"><h4 class="collection-header-with">Configuración</h4></div>
@@ -49,7 +49,8 @@
 					</aside>
 				</div>
                 
-            <div class="col s12 m4 l4">
+            <div class="col s12 m12 l4">
+            
                 <table class="responsive-table">
                     <thead>
                         <tr>
@@ -82,8 +83,10 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col s12 m4 l4">
-                
+            <div class="col s12 m12 l4">
+                <div class="card-panel green accent-3" style="padding:2px;">
+                    <h5 class="center-align" style="color:white;">Administrar Secciones de Inventario</h5>
+                </div>
                         <?php
                             if(empty($_GET['codigo'])){
                                 $resultado=$db->mysqli->query("SELECT MAX(id) AS numero FROM Seccion");

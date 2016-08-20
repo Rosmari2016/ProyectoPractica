@@ -59,7 +59,7 @@
 
     <main>
         <div class="row">
-            <div class="col s12 m4 l2">
+            <div class="col s12 m12 l2">
                 <aside>
                     <div class="collection">
                         <div class="collection-header"><h4 class="collection-header-with">Configuración</h4></div>
@@ -70,7 +70,7 @@
                 </aside>
             </div>
 
-            <div class="col s12 m4 l10">
+            <div class="col s12 m12 l10">
                 <div class="card-panel green accent-3" style="padding:2px;">
                     <h5 class="center-align" style="color:white;">Actualizar Datos de la empresa</h5>
                 </div>
@@ -164,5 +164,11 @@
    		</footer>
     <script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
     <script type="text/javascript" src="js/materialize.js"></script>
+    <script type="text/javascript">
+		$(document).ready(function () {
+            $(".dropdown-button").dropdown();
+            $(".button-collapse").sideNav();
+        });
+	</script>
 </body>
 </html>

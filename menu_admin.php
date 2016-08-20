@@ -18,7 +18,7 @@
 	      </ul>
 
 	      <ul class="side-nav" id="mobile-demo">
-	        <li><a href="#">Inventarios</a></li>
+	        <li><a href="crear_producto.php">Inventarios</a></li>
 	        <li><a href="caja.php">Ventas</a></li>
 	        <li><a href="#">Reportes</a></li>
 	      </ul>

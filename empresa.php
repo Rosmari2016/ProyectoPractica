@@ -38,7 +38,7 @@
 		<main>
             
 			<div class="row">
-				<div class="col s12 m4 l2">
+				<div class="col s12 m12 l2">
 					
 					<aside>
 							<div class="collection">
@@ -50,7 +50,7 @@
 					</aside>
 				</div>
 				
-				<div class="col s12 m4 l10">
+				<div class="col s12 m12 l10">
 					<div class="fixed-action-btn horizontal " style="bottom: 45px; right: 24px;">
 						<a class="btn-floating btn-large green accent-4">
 							<i class="material-icons">menu</i> Reporte PDF

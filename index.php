@@ -57,20 +57,23 @@
 	
 	<main>
 		<div class="center-align">
-		<img class="responsive-img" style="width: 250px;" src="" />
-		
-
-		<h5 class="">Por favor, iniciar sesión en su cuenta</h5>
+			
+	
+			
 		<div class="section"></div>
 
 		<div class="container">
+			
 			<div class="z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
 
 			<form name="form1"class="col s12" method="post" action="">
-				<div class='row'>
-				<div class='col s12'>
-				</div>
-				<h3>Bienvenidos</h3>
+				<div class="row">
+					<div class="col s4">
+						<img class="responsive-img" style="width: 100px;" src="img/logo.png" />
+					</div>
+					<div class="col s8">
+						<h5 class="">Iniciar sesión</h5>
+					</div>
 				</div>
 				<?php
 					$act="1";

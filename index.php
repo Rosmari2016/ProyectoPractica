@@ -13,7 +13,7 @@
 	<meta name="description" content="">
     <meta name="author" content="">
 
-	<title>Administrador/a</title>
+	<title>Entrar</title>
 	
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="css/materialize.css">

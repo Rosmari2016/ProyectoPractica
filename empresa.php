@@ -43,9 +43,9 @@
 					<aside>
 							<div class="collection">
 								<div class="collection-header"><h4 class="collection-header-with">Configuración</h4></div>
-								<a href="#!" class="collection-item">Datos de la empresa</a>
-								<a href="#!" class="collection-item">Administrar Secciones de Inventarios</a>
-								<a href="caja.html" class="collection-item">Ventas</a>
+								<a href="datos_empresa.php" class="collection-item">Datos de la empresa</a>
+								<a href="seccion.php" class="collection-item">Administrar Secciones de Inventarios</a>
+								<a href="caja.php" class="collection-item">Ventas</a>
 							</div>	
 					</aside>
 				</div>

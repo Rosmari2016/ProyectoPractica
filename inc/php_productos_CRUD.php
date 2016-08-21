@@ -7,7 +7,7 @@
 
         $sql=$db->mysqli->query("SELECT * FROM producto WHERE cod='$gcodigo'");
         if($row=$sql->num_rows>0){
-            $xSQL = "UPDATE producto SET prov='$gprov',
+            $update = "UPDATE producto SET prov='$gprov',
                                          cprov='$gcprov',
                                          nom='$gnom',
                                          costo='$gcosto',
@@ -18,15 +18,17 @@
                                          seccion='$gseccion',
                                          fecha='$gfecha'
                             WHERE cod='$gcodigo'";
-            $db->mysqli->query($xSQL);
+            $db->mysqli->query($update);
             echo '<div class="alert alert-success">
                     <strong>Producto / Articulo '.$gnom.' </strong> Actualizado con Exito
                   </div>';
         }else{
-            $xSQL = "INSERT INTO producto (cod,prov,cprov,nom,costo,mayor,venta,cantidad,minimo,seccion,fecha,estado)
-                                 VALUES($gcodigo,'$gprov','$gcprov','$gnom','$gcosto','$gmayor','$gventa','$gcantidad','$gminimo','$gseccion','$gfecha','s');";
+            $insert = "INSERT INTO producto (cod,prov,cprov,nom,costo,mayor,venta,cantidad,minimo,seccion,fecha,estado)
+                                 VALUES($gcodigo,'$gprov','$gcprov','$gnom','$gcosto','$gmayor','$gventa','$gcantidad','$gminimo','$gseccion','$gfecha','s')";
 
-            $db->mysqli->query($xSQL);
+            $resul = $db->mysqli->query($insert);
+
+    
             echo '<div class="alert alert-success">
                     <strong>Producto / Articulo '.$gnom.' </strong> Guardado con Exito
                   </div>';

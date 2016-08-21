@@ -59,8 +59,8 @@
 					<div class="row">
                         <form class="col s6" method="POST" action="">
                              <div class="input-field col s6">
-                                 <input type="text" class="validate" id="ccodigo" name="ccodigo" placeholder="Código del articulo">
-                                 
+                                 <input type="text" class="validate" id="ccodigo" name="ccodigo">
+                                 <label for="ccodigo">Código del articulo</label>
                              </div>
                              <div class="input-field col s6">
                                 <br>

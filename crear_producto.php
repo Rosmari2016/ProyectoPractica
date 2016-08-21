@@ -43,7 +43,7 @@
 							<div class="collection">
 								<div class="collection-header"><h4 class="collection-header-with">Acciones</h4></div>
                                 <div class="divider"></div>
-								<a href="#!" class="collection-item">Buscar Producto</a>
+								<a href="buscar_producto.php" class="collection-item">Buscar Producto</a>
 								<a href="crear_producto.php" class="collection-item active">Crear Producto</a>
                                
 								<a href="#" class="collection-item">Buscar Proveedor</a>

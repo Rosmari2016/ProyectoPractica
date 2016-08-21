@@ -40,7 +40,7 @@
             <div class="col s12 m12 l2">
                 <aside>
                     <div class="collection">
-                        <div class="collection-header"><h4 class="collection-header-width">Acciones</h4></div>
+                        <div class="collection-header"><h4 class="collection-header-with">Acciones</h4></div>
                         <div class="divider"></div>
 						<a href="buscar_producto.php" class="collection-item active">Buscar Producto</a>
 						<a href="crear_producto.php" class="collection-item">Crear Producto</a>       
@@ -79,6 +79,60 @@
                              </div>
                         </div>
                     </form>
+                    <div class="col s12">
+                        <table class="responsive-table">
+                            <thead>
+                                <tr>
+                                    <th>Codigo</th>
+                                    <th>&nbsp;</th>
+                                    <th>Nombre del producto</th>
+                                    <th>Estado</th>
+                                    <th>Proveedor</th>
+                                    <th>Cod. del proveedor</th>
+                                    <th>Valor Venta</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    if(empty($_POST['bus'])){
+                                        $query=$db->mysqli->query("SELECT producto.cod AS cod, producto.nom as nom, producto.cprov as cprov, proveedor.nom as empresa, producto.venta as venta, producto.estado as estado
+                                                                         FROM producto INNER JOIN proveedor ON proveedor.codigo=producto.prov");
+                                    }else{
+                                        $buscar=$_POST['bus'];
+                                        $query=$db->mysqli->query("SELECT producto.cod AS cod, producto.nom as nom, producto.cprov as cprov, proveedor.nom as empresa, producto.venta as venta,producto.estado as estado
+                                                                                 FROM producto INNER JOIN proveedor ON proveedor.codigo=producto.prov
+                                                                                 WHERE producto.nom LIKE '$buscar%' OR producto.cod LIKE '$buscar%' OR producto.cprov LIKE '$buscar%'");
+                                    }
+                                    while($row=$query->fetch_object()){
+                                        $codigo=$row->cod;
+                                        if($row->estado=="n"){
+                                            $estado='<span class="new badge red" data-badge-caption="">Inactivo</span>';
+                                        }else{
+                                            $estado='<span class="new badge green accent-4" data-badge-caption="">Activo</span';
+                                        }                                
+                                ?>
+                                        <tr>
+                                            <td>
+                                                <?php
+                                                    if(file_exists("img/articulo".$codigo.".jpg")){
+                                                        echo '<img src="img/articulo/'.$codigo.'.jpg" width="50" height="50">';
+                                                    }else{
+                                                        echo '<img src="img/articulo/producto.png" width="50" height="50">';
+                                                    }
+                                                ?>
+                                            </td>
+                                            <td><?php echo $row->cod; ?></td>
+                                            <td><a href="crear_producto.php?codigo=<?php echo $row->cod; ?>"><?php echo $row->nom; ?></a></td>
+                                            <td><a href="php_estado_producto.php?id=<?php echo $row->cod; ?>"><?php echo $estado; ?></a></td>
+                                            <td><?php echo $row->empresa; ?></td>
+                                            <td><?php echo $row->cprov;?></td>
+                                            <td><?php echo number_format($row->venta,2,",","."); ?></td>
+                                        </tr>
+                             <?php } ?>
+                            </tbody>
+                        </table>
+                    
+                    </div>
                 </div>
             </div>
         </div>

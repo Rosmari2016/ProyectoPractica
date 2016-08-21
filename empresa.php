@@ -99,7 +99,7 @@
                     <?php if ($mensaje=='no'){
                         echo '<div class="alert alert-success center-align"><strong>No existen articulos bajos de stock!</strong></div>';
                     } ?>
-					<table class="responsive-table ">
+					<table class="responsive-table">
 						<thead>
 							<tr colspan="6"><center><b>Listado y Totales de Productos</b></center></tr>
 							<tr>

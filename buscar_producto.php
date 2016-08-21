@@ -123,7 +123,7 @@
                                             </td>
                                             <td><?php echo $row->cod; ?></td>
                                             <td><a href="crear_producto.php?codigo=<?php echo $row->cod; ?>"><?php echo $row->nom; ?></a></td>
-                                            <td><a href="php_estado_producto.php?id=<?php echo $row->cod; ?>"><?php echo $estado; ?></a></td>
+                                            <td><a href="inc/php_estado_producto.php?id=<?php echo $row->cod; ?>"><?php echo $estado; ?></a></td>
                                             <td><?php echo $row->empresa; ?></td>
                                             <td><?php echo $row->cprov;?></td>
                                             <td><?php echo number_format($row->venta,2,",","."); ?></td>

@@ -22,4 +22,5 @@
         }
     }
     header("Location:../buscar_producto.php");
+
 ?>

@@ -107,7 +107,7 @@
                         ?>
                 
                 <div class="row">
-                    <form class="col s12" name="form1" method="POST" action="">
+                    <form class="col s12"  method="POST" action="" nctype="multipart/form-data" name="form1" id="form1">
                         <div class="row">
                             <div class="input-field col s12">
                                 <input type="text" name="s_codigo" id="s_codigo" value="<?php echo $s_codigo;?>" readonly>

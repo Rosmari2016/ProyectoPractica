@@ -95,11 +95,11 @@
                             <tbody>
                                 <?php
                                     if(empty($_POST['bus'])){
-                                        $query=$db->mysqli->query("SELECT producto.cod AS cod, producto.nom as nom, producto.cprov as cprov, proveedor.nom as empresa, producto.venta as venta, producto.estado as estado
+                                        $query=$db->mysqli->query("SELECT producto.cod AS cod, producto.nom as nom, producto.cprov as cprov, proveedor.empresa as empresa, producto.venta as venta, producto.estado as estado
                                                                          FROM producto INNER JOIN proveedor ON proveedor.codigo=producto.prov");
                                     }else{
                                         $buscar=$_POST['bus'];
-                                        $query=$db->mysqli->query("SELECT producto.cod AS cod, producto.nom as nom, producto.cprov as cprov, proveedor.nom as empresa, producto.venta as venta,producto.estado as estado
+                                        $query=$db->mysqli->query("SELECT producto.cod AS cod, producto.nom as nom, producto.cprov as cprov, proveedor.empresa as empresa, producto.venta as venta,producto.estado as estado
                                                                                  FROM producto INNER JOIN proveedor ON proveedor.codigo=producto.prov
                                                                                  WHERE producto.nom LIKE '$buscar%' OR producto.cod LIKE '$buscar%' OR producto.cprov LIKE '$buscar%'");
                                     }
@@ -137,7 +137,16 @@
             </div>
         </div>
     </main>
-    <footer class="page-footer green accent-4">
+        <div class="fixed-action-btn horizontal " style="bottom: 45px; right: 24px;">
+			<a class="btn-floating btn-large green accent-4">
+				<i class="material-icons">menu</i> Reporte PDF
+			</a>
+			<ul>
+                <li><a href="crear_producto.php" class="btn-floating green"><i class="material-icons">add</i></a></li>
+				<li><a class="btn-floating green"><i class="material-icons">print</i></a></li>
+			</ul>
+		</div>
+        <footer class="page-footer green accent-4">
 			<div class="footer-copyright">
 				© 2016 Copyright Rosa Marina Lumbí Suárez
 				<!--<a class="grey-text text-lighten-4 right" href="#!">More Links</a>-->

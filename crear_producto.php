@@ -70,7 +70,7 @@
                              </div>
                         </form>
                         
-                        <form class="col s12" enctype="multipart/form-data" action="">
+                        <form class="col s12" enctype="multipart/form-data" method="POST" action="">
                             <?php
                                 if(!empty($_POST['ccodigo']) or !empty($_GET['codigo'])){
                                     $prov='';$nom='';$costo='0';$mayor='0';$cantidad='0';$minimo='0';$seccion='';$codigo='';$venta='0';$cprov='';
@@ -182,19 +182,28 @@
                             <div class="col s4 center-align"><br><br>
                                 <h4 style="font-size:1.5em;">Imagen del Producto</h4>
                                 <br><br>
+                                <?php
+                                    if(file_exists("img/articulo/".$codigo.".jpg")){
+                                        echo '<img src="img/articulo/'.$codigo.'.jpg" width="200" height="200" class="responsive-img">';
+                                    }else{
+                                        echo '<img src="img/articulo/producto.png" width="200" height="200" class="responsive-img">';
+                                    }
                                 
-                                <img src="img/articulo/producto.png" width="200" height="200" class="responsive-img">
+                                ?>
+                           
                                 <div class="file-field input-field ">
                                     <div class="btn green accent-4">
                                         <i class="material-icons">picture_in_picture</i>
-                                        <input type="file" multiple>
+                                        <input name="imagen" type="file" multiple>
                                     </div>
                                     <div class="file-path-wrapper ">
                                         <input class="file-path validate" type="text" placeholder="Ningún archivo seleccionado">
                                     </div>
                                 </div>
                             </div>
-                            <?php } ?>
+                            <?php }
+                                require_once("inc/php_productos_CRUD.php");
+                             ?>
                         </form>
                     </div>				
 				</div>

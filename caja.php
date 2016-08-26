@@ -57,13 +57,61 @@
                       <a class="modal-trigger waves-effect waves-light btn green accent-4" href="#modal1"><i class="material-icons left">done</i>Agregar producto rápido</a>
                   </div>
                   <div class="col s12 m4 l4">
-                      <form name="form1" action="">
+                      <form name="form1" action="" method="POST">
                           <div class="input-field">
-                              <input type="text" class="validate">
+                              <input type="text" autofocus class="validate" name="codigo" autocomplete="off" list="lista">
+                                <datalist id="lista">
+                                    <?php
+                                        $can=$db->mysqli->query("SELECT * FROM producto");
+                                        while($row=$can->fetch_object()){
+                                            echo '<option value="'.$row->nom.'">';
+                                        }
+                                    
+                                    ?>
+                                </datalist>
+
                               <label for="codigo">Codigo de barra o Nombre del producto</label>
                           </div>
                       </form>
+                      <?php
+                        if(!empty($_POST['codigo'])){
+                            $codigo=$_POST['codigo'];
+                            $can=$db->mysqli->query("SELECT * FROM caja_tmp WHERE cod='$codigo' OR nom='$codigo'");
+                            if($row=$can->fetch_object()){
+                                $sql="UPDATE caja_tmp SET importe='$aventa', cant='$acant' WHERE cod='$dcodigo'";
+                                $db->mysqli->query($sql);
+                            }else{
+                                $can=$db->mysqli->query("SELECT * FROM producto WHERE cod='$codigo' OR nom='$codigo'");
+                                if($row=$can->fetch_object()){
+                                    if($_SESSION['tventa']=="venta"){
+                                        $importe=$row->venta;
+                                        $venta=$row->venta;
+                                    }else{
+                                        $importe=$row->mayor;
+                                        $venta=$row->mayor;
+                                    }
+                                    $cod=$row->cod;
+                                    $nom=$row->nom;
+                                    $cant="1";
+                                    $exitencia=$row->cantidad;
+                                    $usu=$_SESSION['username'];
+                                    $sql="INSERT INTO caja_tmp(cod,nom,venta,cant,importe,existencia,usu)VALUES('$cod','$nom','$venta','$cant','$importe','$exitencia','$usu')";
+                                    $db->mysqli->query($sql);
+                                }else{
+                                    echo '<div class="alert alert-error" align="center">
+                                            <strong>
+                                                Producto no encontrado en la base de datos 
+                                                <a href="#modal1" role="button" class="modal-trigger waves-effect waves-light btn green accent-4"><i class="material-icons">add</i></a>
+                                            </strong>
+                                         </div>';
+                                }
+                            }
+                        }
+                      
+                      ?>
                   </div>
+
+
                   <div class="col s12 m4 l4">
                       <br>
                       <div class="chip center-align" style="width:100%;">
@@ -75,7 +123,7 @@
                   <div class="col s12">
                       <table class="responsive-table">
                           <thead>
-                              < tr>
+                              <tr>
                                   <th>Código</th>
                                   <th>Descrpcion del Producto</th>
                                   <th>Valor Unitario</th>

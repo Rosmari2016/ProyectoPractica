@@ -2,9 +2,23 @@
     session_start();
     require("inc/php_conexion.php");
     $db = new Db();
-        if(!$_SESSION['tipo_usu']=='a' or !$_SESSION['tipo_usu']=='ca'){
-			header('location:error.php');
-		}
+    if(!$_SESSION['tipo_usu']=='a' or !$_SESSION['tipo_usu']=='ca'){
+		header('location:error.php');
+	}
+    $usuario=$_SESSION['username'];
+    $sql=$db->mysqli->query("SELECT * FROM usuarios WHERE usu='$usuario'");
+    if($row=$sql->fetch_object()){
+        $nombre_usu=$row->nom;
+    }
+    if(!empty($_POST['tmp_cantidad']) and !empty($_POST['tmp_nombre']) and !empty($_POST['tmp_valor'])){
+        $tmp_cantidad=$_POST['tmp_cantidad'];
+        $tmp_nombre=$_POST['tmp_nombre'];
+        $tmp_valor=$_POST['tmp_valor'];
+        $fechay=date("Y-m-d");
+        $tmp_importe=$tmp_cantidad*$tmp_valor;
+        $cmd="INSERT INTO caja_tmp(cod,nom,venta,cant,importe,existencia,usu)VALUES('0000','$tmp_nombre','$tmp_valor','$tmp_cantidad','$tmp_importe','$tmp_cantidad','$usuario'";
+        $db->mysqli->query($cmd);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -61,7 +75,7 @@
                   <div class="col s12">
                       <table class="responsive-table">
                           <thead>
-                              <tr>
+                              < tr>
                                   <th>Código</th>
                                   <th>Descrpcion del Producto</th>
                                   <th>Valor Unitario</th>

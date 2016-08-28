@@ -78,6 +78,7 @@
                             $codigo=$_POST['codigo'];
                             $can=$db->mysqli->query("SELECT * FROM caja_tmp WHERE cod='$codigo' OR nom='$codigo'");
                             if($row=$can->fetch_object()){
+                                $acant=$row->cant+1;$dcodigo=$row->cod;$aventa=$row->venta*$acant;
                                 $sql="UPDATE caja_tmp SET importe='$aventa', cant='$acant' WHERE cod='$dcodigo'";
                                 $db->mysqli->query($sql);
                             }else{
@@ -139,12 +140,13 @@
                           </thead>
                           <tbody>
                           <?php $na=0; $can=$db->mysqli->query("SELECT * FROM caja_tmp WHERE usu='$usuario'");
-                                while($row=$can->fetch_object()){   
+                                while($row=$can->fetch_object()){  
+                                    $na+=$row->cant; 
                           ?>
                                 <tr>
                                     <td><?php echo $row->cod ?></td>
                                     <td><?php echo $row->nom; ?></td>
-                                    <td><a href="caja.php?id=<?php echo $row->cod.'&ddes='.$_SESSION['ddes'];?>">C$ <?php echo number_format($row->venta,2,",","."); ?></a></td>
+                                    <td><a href="caja.php?id=<?php echo $row->cod.'&ddes='.$_SESSION['ddes']; ?>">C$ <?php echo number_format($row->venta,2,",","."); ?></a></td>
                                     <td><a href="caja.php?idd=<?php echo $row->cod.'&ddes='.$_SESSION['ddes']; ?>"><?php echo $row->cant; ?></a></td>
                                     <td class="green accent-2"><div align="left">CS <?php echo number_format($row->importe,2,",",".") ?></div></td>
                                     <td>
@@ -218,14 +220,18 @@
                   <div class="col s12 m4 l4">
                       
                       <div class="chip center-align" style="width:100%;height:70px;">
-                          <h4>0 Articulos en venta</h4>
+                          <h4><?php echo $na;?> Articulos en venta</h4>
                       </div>
                   </div>
                   <div class="col s12 m4 l4">
-                      <form name="form3" action="">
+                      <?php //if($_GET['ddes']>=0){
+                        //  $_SESSION['ddes']=$_GET['ddes'];
+                      //}
+                      ?>
+                      <form name="form3" method="get" action="caja.php" >
                           <div class="row">
                               <div class="input-field col s6">
-                                  <input type="number" class="validate" placeholder="0">
+                                  <input type="number" class="validate" min="0" max="99" name="ddes" id="ddes" value="<?php echo $_SESSION['ddes'];?>" placeholder="0">
                                   <label for="Descuento">Descuento al Neto</label>
                               </div>
                               <div class="col s4">
@@ -239,9 +245,19 @@
                   </div>
                   <div class="col s12 m4 l4">
                       <div class="chip right-align" style="width:100%;height:70px;">
-                          <h4>Neto: C$ 0,00</h4>
+                          <h4>Neto: C$ <?php $can=$db->mysqli->query("SELECT SUM(importe) as neto FROM caja_tmp WHERE usu='$usuario'"); 
+                                if($row=$can->fetch_object()){
+                                    $NETO=$row->neto-($row->neto*$_SESSION['ddes']/100); $_SESSION['neto']=$NETO;
+                                    echo number_format($_SESSION['neto'],2,",",".");
+                                }
+                          ?></h4>
                       </div>
                   </div>
+                <?php if($NETO<>0){ ?>
+                  <div class="col s12 center-align">
+                        <a role="button" class="modal-trigger waves-effect waves-light btn green accent-4" href="#myContado"><i class="material-icons left">shopping_cart</i>V. Contado</a>
+                  </div>
+                <?php } ?>
               </div>
           </section>
 

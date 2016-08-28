@@ -260,12 +260,44 @@
                 <?php } ?>
               </div>
           </section>
+          <!-- Modal myContado -->
+          <div id="myContado" class="modal modal-fixed-footer">
+                <form id="form1" name="contado" method="get" action="contado_credito.php">
+                    <div class="modal-content">
+                        <h4>COBRAR AL CONTADO</h4>
+                        <br>
+                        <div class="row">
+                            <h5 class="center-align">Total a cobrar</h5>
+                            <div class="chip col s12 center-align" style="font-size:30px;padding-bottom:40px;padding-top:20px;"><?php echo 'C$ '.number_format($_SESSION['neto'],2,",","."); ?></div>
+                            <p class="center-align"><strong class="blue-text">Forma de Pago "Contado"</strong></p>
+                            <div align="center">
+                                <input type="hidden" name="tpagar" id="tpagar" value="<?php echo $_SESSION['neto']; ?>">
+                                <div class="input-field col s12">
+                                    <input type="number" name="ccpago" id="ccpago" autocomplete="on" required class="validate">
+                                    <label for="dinero">Dinero Recibido</label>
+                                </div>
+                                <div class="col s12">
+                                     <button class="btn waves-effect waves-light green accent-4" type="submit" name="action">Cobrar Dinero Recibido
+                                        <i class="material-icons right">send</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                      
+                    </div>
+                    <div class="modal-footer">
+                         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                    </div>
+                    
+                </form>
+          </div>
 
+          <!-- Modal crear articulo -->
           <div id="modal1" class="modal modal-fixed-footer">
               <form name="form1" class="col s12" action="">
                 <div class="modal-content">
                     <h4>Agregar producto rápido</h4>
-                    <br>
+                    <hr>
                         <div class="row">
                             <div class="input-field col s12">
                                 <input type="text" class="validate">

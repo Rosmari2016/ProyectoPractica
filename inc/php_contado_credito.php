@@ -37,10 +37,21 @@
                 if($row=$ca->fetch_object()){
                     $e_actual=$date['cantidad'];
                 }
+                $n_cantidad=$e_actual-$cant;
+                if($n_cantidad<0){$n_cantidad=0;}// si la cantidad de negativo ponerlo en 0
+                $sql="UDPATE producto SET cantidad='$n_cantidad' WHERE cod='$cod'";
+                $db->mysqli->query($sql);
+                ///////////////////////////////////////////////
             }
+
+            $borrar_sql="DELETE FROM caja_tmp WHERE usu='$usuario'";//borrar todo de la caja temporal
+            $db->mysqli->query($borrar_sql);
+
+            header('location:../contado.php?tpagar='.$tpagar.'&ccpago='.$ccpago.'&factura='.$cfactura);
+        }else{
+            header('location:../contado.php?mensaje=error');
         }
     }
-
-
+    $_SESSION['ddes']=0;
 
 ?>

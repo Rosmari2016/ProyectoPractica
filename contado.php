@@ -108,6 +108,7 @@
                             
                             <div id="ocultar" class="alert-success col s12 m12 l12 center-align green-text" style="font-size:1.3em;margin-top:30px;margin-bottom:25px;">
                                 <strong>Pago Realizado con exito</strong><br><a href="caja.php?ddes=0">Regresar a la caja</a>
+                                
                             </div>
                             
                             <center><a class="waves-effect waves-light btn-large green accent-4" onclick="imprimir();"><i class="material-icons left">print</i> Imprimir Factura</a></center>
@@ -187,6 +188,24 @@
             </div>
         <?php } ?>
     </main>  
+
+    <?php
+        if($error=='si'){
+    ?>
+        <div class="alert alert-error" align="center">
+            <strong>El dinero recibido es menor al valor a pagar</strong><br>
+            <strong><a href="caja.php?ddes=<?php echo $_SESSION['ddes'];?>">Regresar a la caja</a></strong>
+        </div>
+    <?php } 
+        if($error=='num'){
+            echo '<div class="alert alert-error" align="center">
+                    <strong>Solo debe de ingresar numeros en este campo</strong><br>
+                    <strong><a href="caja.php?ddes='.$_SESSION['ddes'].'">Regresar a la caja</a></strong>
+                </div>';
+        }
+
+    ?>
+
 
     <footer class="page-footer green accent-4">
 		<div class="footer-copyright">

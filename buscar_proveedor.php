@@ -129,6 +129,16 @@
         </div>
     </main>
 
+    <div class="fixed-action-btn horizontal " style="bottom: 45px; right: 24px;">
+			<a class="btn-floating btn-large green accent-4">
+				<i class="material-icons">menu</i> Reporte PDF
+			</a>
+			<ul>
+                <li><a href="crear_producto.php" class="btn-floating green"><i class="material-icons">add</i></a></li>
+				<li><a class="btn-floating green"><i class="material-icons">print</i></a></li>
+			</ul>
+	</div>
+
     <footer class="page-footer green accent-4">
 		<div class="footer-copyright">
 			© 2016 Copyright Rosa Marina Lumbí Suárez

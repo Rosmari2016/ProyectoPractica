@@ -111,7 +111,7 @@
                                         <td><?php echo $row->codigo; ?></td>
                                         <td><a href="crear_proveedor.php?codigo=<?php echo $row->codigo;?>"><?php echo $row->empresa; ?></a></td>
                                         <td><?php echo $row->nom; ?></td>
-                                        <td><a href="php_estado_proveedor.php?id=<?php echo $row->codigo; ?>"><?php echo $estado; ?></a></td>
+                                        <td><a href="inc/php_estado_proveedor.php?id=<?php echo $row->codigo; ?>"><?php echo $estado; ?></a></td>
                                         <td><?php echo $row->tel; ?></td>
                                         <td><?php echo $row->cel; ?></td>
                                         <td><?php echo $row->correo; ?></td>

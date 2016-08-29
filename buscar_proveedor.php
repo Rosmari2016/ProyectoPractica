@@ -80,6 +80,48 @@
                              </div>
                         </div>
                     </form>
+                    <div class="col s12">
+                        <table class="responsive-table">
+                            <thead>
+                                <tr>
+                                    <th>Código</th>
+                                    <th>Nombre Empresa</th>
+                                    <th>Contacto</th>
+                                    <th>Estado</th>
+                                    <th>Telefono</th>
+                                    <th>Celular</th>
+                                    <th>Correo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php if(empty($_POST['bus'])){
+                                    $can=$db->mysqli->query("SELECT * FROM proveedor");
+                                  }else{
+                                      $buscar=$_POST['bus'];
+                                      $can=$db->mysqli->query("SELECT * FROM proveedor WHERE nom LIKE '$buscar%' OR empresa LIKE '$buscar%'");
+                                  }
+                                  while($row=$can->fetch_object()){
+                                    if($row->estado=="n"){
+                                        $estado='<span class="new badge red" data-badge-caption="">Inactivo</span>';
+                                    }else{
+                                            $estado='<span class="new badge green accent-4" data-badge-caption="">Activo</span';
+                                        } 
+                            ?>
+                                    <tr>
+                                        <td><?php echo $row->codigo; ?></td>
+                                        <td><a href="crear_proveedor.php?codigo=<?php echo $row->codigo;?>"><?php echo $row->empresa; ?></a></td>
+                                        <td><?php echo $row->nom; ?></td>
+                                        <td><a href="php_estado_proveedor.php?id=<?php echo $row->codigo; ?>"><?php echo $estado; ?></a></td>
+                                        <td><?php echo $row->tel; ?></td>
+                                        <td><?php echo $row->cel; ?></td>
+                                        <td><?php echo $row->correo; ?></td>
+                                    </tr>
+                            <?php } ?>
+                            </tbody>
+                        </table>
+                    
+                    </div>
+
                 </div>
             
             </div>

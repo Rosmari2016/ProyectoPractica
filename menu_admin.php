@@ -1,5 +1,5 @@
    <ul id="dropdown1" class="dropdown-content">
-	  <li><a href="#!"><i class="material-icons left">settings_backup_restore</i>Cambiar Contraseña</a></li>
+	  <li><a href="cambiar_clave.php"><i class="material-icons left">settings_backup_restore</i>Cambiar Contraseña</a></li>
 	  <li class="divider"></li>
 	  <li><a href="inc/php_cerrar_sesion.php"><i class="material-icons left">power_settings_new</i>Salir</a></li>
 	</ul>

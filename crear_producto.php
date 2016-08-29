@@ -27,7 +27,7 @@
 				flex: 1 0 auto;
 			}
 	</style>
-	<link rel="shortcut icon" type="image/x-icon" href="ico/favicon.png">
+	<link rel="shortcut icon" type="image/x-icon" href="img/logo.png">
 </head>
 <body>
     <?php

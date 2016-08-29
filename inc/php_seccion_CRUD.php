@@ -1,4 +1,7 @@
 <?php
+    if(!$_SESSION['tipo_usu']=='a' or !$_SESSION['tipo_usu']=='ca'){
+        header('location:../seccion.php');
+    }
     if(!empty($_POST['s_nombre'])){
         $ss_codigo=$_POST['s_codigo']; $ss_nombre=$_POST['s_nombre'];
 

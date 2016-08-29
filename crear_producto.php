@@ -199,10 +199,11 @@
                                         <input class="file-path validate" type="text" placeholder="Ningún archivo seleccionado">
                                     </div>
                                 </div>
+                                 <?php }
+                                    require_once("inc/php_productos_CRUD.php");
+                                ?>
                             </div>
-                            <?php }
-                                require_once("inc/php_productos_CRUD.php");
-                             ?>
+                           
                         </form>
                     </div>				
 				</div>

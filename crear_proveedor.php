@@ -73,9 +73,10 @@
                 <div class="card-panel green accent-3" style="padding:2px;">
                     <h5 class="center-align" style="color:white;">Creación de Proveedores</h5>
                 </div>
-
-                
-
+                   
+                <?php 
+                     require_once("inc/php_proveedor_CRUD.php");
+                ?>
                 <div class="row">
                     <form name="form1" class="col s12" method="POST" action="">
                         <div class="row">
@@ -120,9 +121,10 @@
                             
                             <div class="col s6 center-align" >
                                 <br><br>
-                                <button class="btn-large waves-effect waves-light green accent-4" type="submit" name="action">Guardar Proveedor
+                                <button class="btn-large waves-effect waves-light green accent-4" type="submit" name="action"><?php echo $boton; ?>
                                     <i class="material-icons right">send</i>
                                 </button>
+                                <?php if($boton=='Actualizar Proveedor'){?> <a href="crear_proveedor.php" class="waves-effect waves-light btn-large green accent-4">Cancelar</a> <?php } ?> 
                             </div>
                         
                         </div>

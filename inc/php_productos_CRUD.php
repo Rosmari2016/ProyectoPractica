@@ -1,4 +1,7 @@
 <?php
+    if(!$_SESSION['tipo_usu']=='a' or !$_SESSION['tipo_usu']=='ca'){
+        header('location:../seccion.php');
+    }
     if (!empty($_POST['nom'])){
         $gnom=$_POST['nom'];    $gprov=$_POST['prov'];  $gcosto=$_POST['costo'];
         $gmayor=$_POST['mayor']; $gventa=$_POST['venta'];   $gcantidad=$_POST['cantidad'];

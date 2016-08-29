@@ -159,7 +159,7 @@
                                         
                                         ?>
                                     </td>
-                                    <td><button class="waves-effect waves-light btn red" onClick="window.location='php_eliminar_caja.php?id=<?php echo $row->cod; ?>'"><i class="left material-icons">delete</i>Remover</button></td>
+                                    <td><button class="waves-effect waves-light btn red" onClick="window.location='inc/php_eliminar_caja.php?id=<?php echo $row->id; ?>'"><i class="left material-icons">delete</i>Remover</button></td>
                                 </tr>
                                 <?php } ?>
                           </tbody>

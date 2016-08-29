@@ -44,8 +44,8 @@
                         <div class="divider"></div>
 						<a href="buscar_producto.php" class="collection-item active">Buscar Producto</a>
 						<a href="crear_producto.php" class="collection-item">Crear Producto</a>       
-						<a href="#" class="collection-item">Buscar Proveedor</a>
-                        <a href="#" class="collection-item">Crear  Proveedor</a>
+						<a href="buscar_proveedor.php" class="collection-item">Buscar Proveedor</a>
+                        <a href="crear_proveedor.php" class="collection-item">Crear  Proveedor</a>
                     </div>
                 </aside>
             </div>

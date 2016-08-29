@@ -56,7 +56,7 @@
 							<i class="material-icons">menu</i> Reporte PDF
 						</a>
 						<ul>
-							<li><a class="btn-floating green"><i class="material-icons">print</i></a></li>
+							<li><a href="PDFproducto.php" class="btn-floating green"><i class="material-icons">print</i></a></li>
 						</ul>
 					</div>
 					<table class="responsive-table">

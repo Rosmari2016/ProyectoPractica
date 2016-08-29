@@ -158,7 +158,7 @@
     </main>
     	<footer class="page-footer green accent-4">
 			<div class="footer-copyright">
-				© 2016 Copyright Rosa Marina Lumbí Suárez
+				© 2016 Copyright Rosa Lumbí, Yuritza Solis, Freddy Sirias
 				<!--<a class="grey-text text-lighten-4 right" href="#!">More Links</a>-->
 			</div>
    		</footer>

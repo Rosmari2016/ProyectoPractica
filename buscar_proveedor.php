@@ -55,6 +55,32 @@
                 <div class="card-panel green accent-3" style="padding:2px;">
                     <h5 class="center-align" style="color:white;">Listado de proveedores registrados</h5>
                 </div>
+                <div class="row">
+                    <form class="col s6" method="POST" enctype="multipart/form-data" name="form1" id="form1" action="">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input name="bus" type="text" class="validate" list="characters">
+                                    <datalist id="characters">
+                                        <?php
+                                            $buscar=$_POST['bus'];
+                                            $sql=$db->mysqli->query("SELECT * FROM proveedor");
+                                            while($row=$sql->fetch_object()){
+                                                echo '<option value="'.$row->nom.'">';
+                                                echo '<option value="'.$row->empresa.'">';
+                                            }
+                                        ?>
+                                    </datalist>
+                                <label for="buscar">Buscar</label>
+                            </div>
+                            <div class="col s6">
+                                <br>
+                                <button class="btn waves-effect waves-light green accent-4" type="submit">Buscar por Nombre!
+                                    <i class="material-icons right">send</i>
+                                 </button>
+                             </div>
+                        </div>
+                    </form>
+                </div>
             
             </div>
         

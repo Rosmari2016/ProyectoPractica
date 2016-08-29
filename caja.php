@@ -262,7 +262,7 @@
           </section>
           <!-- Modal myContado -->
           <div id="myContado" class="modal modal-fixed-footer">
-                <form id="form1" name="contado" method="get" action="contado_credito.php">
+                <form id="form1" name="contado" method="get" action="inc/php_contado_credito.php">
                     <div class="modal-content">
                         <h4>COBRAR AL CONTADO</h4>
                         <br>
